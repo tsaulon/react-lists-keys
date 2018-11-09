@@ -8,7 +8,10 @@ const numbers = Array.from(Array(5).keys());
 function NumberItems(props) {
 
     let numbers = props.number;
-    let items = numbers.map(x => <li key={x.toString()}>{x}</li>)
+    //  Note: Typical solutions for setting keys are to set keys to the IDs passed with the data.
+    //  Note: The solution below will use the item index as it's keys
+    //  Important: Bad practice to use indexes as keys for lists where the order may change.
+    let items = numbers.map((num, index) => <li key={index}>{num}</li>)
 
     return <ul>{items}</ul>
 }
