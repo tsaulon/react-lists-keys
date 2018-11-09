@@ -8,7 +8,7 @@ const numbers = Array.from(Array(5).keys());
 function NumberItems(props) {
 
     let numbers = props.number;
-    let items = numbers.map(x => <li>{x}</li>)
+    let items = numbers.map(x => <li key={x.toString()}>{x}</li>)
 
     return <ul>{items}</ul>
 }
