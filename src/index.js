@@ -16,7 +16,25 @@ function NumberItems(props) {
     return <ul>{items}</ul>
 }
 
-ReactDOM.render(<NumberItems number={numbers}/>, document.getElementById('root'));
+function ListItem(props) {
+    return <li>{props.value}</li>;
+}
+
+function NumberList(props) {
+    const numbers = props.numbers;
+    //  set keys here to enable data extraction from components
+    //  Important: Keys can be reusable but need to be passed as a different property
+    //    Example: <ListItem key={num.toString()} id={num} value={num} />
+    const listItems = numbers.map(num => <ListItem key={num.toString()} value={num} />)
+
+    return <ul>{listItems}</ul>
+}
+
+ReactDOM.render(<ol>
+                    <li><NumberItems number={numbers}/></li>
+                    <li><NumberList numbers={Array.from(Array(5).keys(), x => x + 1)} /></li>
+                </ol>, 
+                document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
